@@ -1,10 +1,10 @@
 # DeepSeek-V4 DSec 沙箱平台技术研究报告
 
-**文档版本**: 1.0\
-**撰写日期**: 2026-05-07
+**文档版本**: 1.0\  
+**撰写日期**: 2026-05-07    
 **参考来源**: DeepSeek-V4 论文 [本地PDF](refer/DeepSeek_V4.pdf) / [在线访问](https://puiching-memory.github.io/TAAC_2026/papers/deepseek-v4/) / [官方下载链接]([refer/DeepSeek_V4.pdf](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf))
   
-## 第1章 前言
+## 第1章 前言  
 
 DeepSeek Elastic Compute（DSec）是 DeepSeek-V4 论文 [第 5.2.5 节](refer/deepseekv4-5.2.5.md) 披露的生产级沙箱基础设施，专为支撑大规模智能体 AI（Agentic AI）的后训练与评估场景设计。DSec 在单个集群中管理数十万个并发沙箱实例的同时，实现毫秒级启动、虚拟机级安全隔离、以及与 GPU 训练调度无缝集成的抢占恢复能力。
 
