@@ -1,6 +1,6 @@
 # DeepSeek-V4 DSec 沙箱平台技术研究报告
 
-**文档版本**: 1.0\  
+**文档版本**: 1.0  
 **撰写日期**: 2026-05-07    
 **参考来源**: DeepSeek-V4 论文 [本地PDF](refer/DeepSeek_V4.pdf) / [在线访问](https://puiching-memory.github.io/TAAC_2026/papers/deepseek-v4/) / [官方下载链接]([refer/DeepSeek_V4.pdf](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf))
   
