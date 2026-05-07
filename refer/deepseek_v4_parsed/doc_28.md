@@ -1,0 +1,19 @@
+Reasoning Efforts. It is widely recognized that a model's performance on reasoning tasks is fundamentally governed by the computational effort expended. Consequently, we trained distinct specialist models under divergent RL configurations to facilitate the development of models optimized for varying reasoning capacities. As detailed in Table 2, DeepSeek-V4-Pro and DeepSeek-V4-Flash both support three specific reasoning effort modes. For each mode, we apply distinct length penalties and context windows during RL training, which results in varying output token lengths for reasoning. To integrate these distinct reasoning modes, we utilize specialized response formats demarcated by the <think> and </think> tokens. Furthermore, for the "Think Max" mode, we prepend a specific instruction to the beginning of the system prompt to guide the model's reasoning process, as shown in Table 3.
+
+<div style="text-align: center;">Table 2 | Comparison of three reasoning modes</div>
+
+
+
+<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Reasoning Mode</td><td style='text-align: center; word-wrap: break-word;'>Characteristics</td><td style='text-align: center; word-wrap: break-word;'>Typical Use Cases</td><td style='text-align: center; word-wrap: break-word;'>Response Format</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Non-think</td><td style='text-align: center; word-wrap: break-word;'>Fast, intuitive responses based on habits or simple rules.</td><td style='text-align: center; word-wrap: break-word;'>Routine daily tasks, emergency reactions, low-risk decisions.</td><td style='text-align: center; word-wrap: break-word;'>&lt;/think&gt; summary</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Think High</td><td style='text-align: center; word-wrap: break-word;'>Conscious logical analysis, slower but more accurate.</td><td style='text-align: center; word-wrap: break-word;'>Complex problem-solving, planning, medium-risk decisions.</td><td style='text-align: center; word-wrap: break-word;'>&lt;think&gt; thinking tokens &lt;/think&gt; summary</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Think Max</td><td style='text-align: center; word-wrap: break-word;'>Push reasoning to its fullest extent. Slow but powerful.</td><td style='text-align: center; word-wrap: break-word;'>Exploring the boundary of model reasoning capability.</td><td style='text-align: center; word-wrap: break-word;'>1. A special system prompt at the beginning. 2. &lt;think&gt; thinking tokens &lt;/think&gt; summary</td></tr></table>
+
+Table 3 | Instruction injected into the system prompt for the "Think Max" mode.
+
+## Injected Instruction
+
+Reasoning Effort: Absolute maximum with no shortcuts permitted.
+
+You MUST be very thorough in your thinking and comprehensively decompose the problem to resolve the root cause, rigorously stress-testing your logic against all potential paths, edge cases, and adversarial scenarios.
+
+Explicitly write out your entire deliberation process, documenting every intermediate step, considered alternative, and rejected hypothesis to ensure absolutely no assumption is left unchecked.
+
+Generative Reward Model. Typically, easy-to-verify tasks can be effectively optimized using simple rule-based verifiers or test cases. In contrast, hard-to-verify tasks traditionally rely on Reinforcement Learning from Human Feedback (RLHF), which necessitates extensive human annotation to train a scalar reward model. In the post-training phase of DeepSeek-V4 series,
